@@ -1,2 +1,3 @@
 ---
 # defaults file for deno
+deno_install_path: "/home/{{lookup('env', 'USER')}}/.deno"

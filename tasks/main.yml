@@ -1,3 +1,25 @@
 ---
 # tasks file for deno
-tasks: 
+- name: Define deno_install_user
+  set_fact:
+    deno_install_user: "{{ deno_install_user | default(lookup('env', 'USER')) }}"
+  when: deno_install_user is not defined
+- name: installing unzip.
+  package: 
+    name: unzip
+    state: present
+- name: Get install script from deno.land and store it in /tmp
+  get_url: 
+    url: https://deno.land/x/install/install.sh
+    dest: /tmp/
+    mode: 0777
+- name: Install deno from script into {{deno_install_path}}
+  environment: 
+    DENO_INSTALL: "{{deno_install_path}}"
+  shell: 
+    cmd: /tmp/install.sh
+- name: add deno_config_prefix bin directory to global $PATH
+  template:
+    src: deno_env.sh.j2
+    dest: /etc/profile.d/deno_env.sh
+    mode: 0644
