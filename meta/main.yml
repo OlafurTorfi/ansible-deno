@@ -1,0 +1,20 @@
+galaxy_info:
+  author: olafurtorfi
+  description: deno installation for Linux and Mac
+  company: Kvika
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+  galaxy_tags:
+    - deno
+    - typescript
+    - javascript
+  license: license (MIT)
+
+  min_ansible_version: 2.1
+
+dependencies: []
