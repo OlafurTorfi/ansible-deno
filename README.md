@@ -1,4 +1,4 @@
-Ansible Deno
+Install Deno With Ansible
 =========
 
 This role installs deno using the provided install script on deno.land.
